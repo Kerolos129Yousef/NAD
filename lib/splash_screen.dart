@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     super.initState();
     Timer(Duration(seconds: 3),() {
-      Navigator.pushNamed(context, LoadingScreen.routeName);
+      Navigator.pushNamed(context, HomeScreen.routeName);
     }, );
   }
   @override
