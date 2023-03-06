@@ -9,7 +9,7 @@ class UserDataTap extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-         Text("data")
+         Text("")
 
         ],
       ),

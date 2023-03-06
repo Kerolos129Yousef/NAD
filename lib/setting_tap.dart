@@ -9,7 +9,7 @@ class SettingTap extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("data")
+          Text(" ")
 
         ],
       ),

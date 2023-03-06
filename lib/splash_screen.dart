@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:add/home_screen.dart';
 import 'package:add/loading_screen.dart';
+import 'package:add/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,8 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
 
     super.initState();
-    Timer(Duration(seconds: 3),() {
-      Navigator.pushNamed(context, HomeScreen.routeName);
+    Timer(Duration(seconds: 2),() {
+      Navigator.pushNamed(context, LoginScreen.routeName);
     }, );
   }
   @override

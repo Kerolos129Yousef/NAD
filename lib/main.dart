@@ -1,4 +1,5 @@
 import 'package:add/home_screen.dart';
+import 'package:add/login/login_screen.dart';
 import 'package:add/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
      routes: {
         HomeScreen.routeName:(_)=>HomeScreen(),
        SplashScreen.routeName:(_)=>SplashScreen(),
-       LoadingScreen.routeName:(_)=>LoadingScreen()
+       LoadingScreen.routeName:(_)=>LoadingScreen(),
+       LoginScreen.routeName:(_)=>LoginScreen()
      },
       debugShowCheckedModeBanner: false,
 

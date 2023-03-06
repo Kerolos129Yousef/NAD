@@ -17,10 +17,17 @@ int selectedIndex =0;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Center(child: Text("User Data",style: TextStyle(color: Color.fromRGBO(61,61,61,1)),)),
+        title: Row(
+          children: [
+            Image.asset("assets/images/ADD_app_icon.png",width: 70,height: 45,),
+            SizedBox(width: 55,),
+            Text("User Data",style: TextStyle(color: Color.fromRGBO(61,61,61,1)),),
+          ],
+        )
       ),
       backgroundColor:Color.fromRGBO(237,237,237,1) ,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
