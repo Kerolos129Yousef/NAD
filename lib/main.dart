@@ -1,4 +1,5 @@
 import 'package:add/home_screen.dart';
+import 'package:add/login/login_screen.dart';
 import 'package:add/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,11 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: HomeScreen.routeName,
+      initialRoute: SplashScreen.routeName,
      routes: {
         HomeScreen.routeName:(_)=>HomeScreen(),
        SplashScreen.routeName:(_)=>SplashScreen(),
-       LoadingScreen.routeName:(_)=>LoadingScreen()
+       LoadingScreen.routeName:(_)=>LoadingScreen(),
+       LoginScreen.routeName:(_)=>LoginScreen()
      },
       debugShowCheckedModeBanner: false,
 
