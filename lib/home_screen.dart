@@ -1,84 +1,84 @@
-
-import 'package:add/setting_tap.dart';
-import 'package:add/user_data_tap.dart';
+import 'dart:io';
+import 'package:add/user_data_screen/age_tap.dart';
+import 'package:add/user_data_screen/country_tap.dart';
+import 'package:add/user_data_screen/eye_image_tap.dart';
+import 'package:add/user_data_screen/Gender/gender_tap.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-static const String routeName = "HomeScreen";
+  static const String routeName = "HomeScreen";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-List<Widget>AppTaps=[UserDataTap(),SettingTap()];
-int selectedIndex =0;
+  List<Widget> UserDataTaps = [
+    CountryTap(),
+    GenderTap(),
+    AgeTap(),
+    EyeImageTap()
+  ];
+  int selectedIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            Image.asset("assets/images/ADD_app_icon.png",width: 70,height: 45,),
-            SizedBox(width: 55,),
-            Text("User Data",style: TextStyle(color: Color.fromRGBO(61,61,61,1)),),
-          ],
-        )
-      ),
-      backgroundColor:Color.fromRGBO(237,237,237,1) ,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-
-        onPressed: () {
-
-        },
-        child: Icon(Icons.water_drop_outlined,size: 30,),
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
-        shape: StadiumBorder(
-
-          side: BorderSide(color: Colors.white,width: 5,style: BorderStyle.solid)
-        ),
-
-
-      ),
-        bottomNavigationBar: BottomAppBar(
-          shape:CircularNotchedRectangle(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () {
+                          if (selectedIndex != 0) {
+                            selectedIndex -= 1;
+                            setState(() {});
+                          } else {
+                            exit(0);
+                          }
+                        },
+                        color: Colors.black,
+                      ),
+                      Text(
+                        "Back",
+                        style: TextStyle(color: Colors.black.withOpacity(0.7)),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              Image.asset("assets/images/ADD_app_icon.png",width: 60,height: 50,)
+            ],
           ),
-          notchMargin: 10,
-          color: Colors.white,
-          elevation:0,
-
-          child: Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: Colors.white
-            ),
-            child: BottomNavigationBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              selectedItemColor: Colors.red,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              currentIndex: selectedIndex,
-              onTap: (index){
-                selectedIndex = index;
-                setState(() {
-
-                });
-              },
-              items: [
-                BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined,size: 30),label:"" ),
-                BottomNavigationBarItem(icon: Icon(Icons.settings,size: 30,),label:"" )
-              ],
-            ),
-          ),
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          backgroundColor: Colors.white,
         ),
-      body: AppTaps[selectedIndex],
-    );
+        backgroundColor: Color.fromRGBO(237, 237, 237, 1),
+        body: UserDataTaps[selectedIndex],
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            if(selectedIndex<3){
+            selectedIndex += 1;
+            setState(() {});}
+            else{
 
+            }
+          },
+          child: Icon(
+            Icons.water_drop_outlined,
+            size: 30,
+          ),
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+          shape: StadiumBorder(
+              side: BorderSide(
+                  color: Colors.white, width: 5, style: BorderStyle.solid)),
+        ));
   }
 }
