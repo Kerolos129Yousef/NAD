@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     AgeTap(),
     EyeImageTap()
   ];
-  int selectedIndex = 2;
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

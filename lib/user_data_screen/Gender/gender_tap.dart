@@ -7,7 +7,7 @@ class GenderTap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
