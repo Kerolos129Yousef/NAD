@@ -1,6 +1,7 @@
 import 'package:add/home_screen.dart';
 import 'package:add/login/button_global.dart';
 import 'package:add/login/social_login.dart';
+import 'package:add/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:add/login/FormField.dart';
 
@@ -91,7 +92,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(height: 25,),
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, HomeScreen.routeName);
+                Navigator.pushNamed(context, WelcomeScreen.routeName);
               },
                 child: Container(
                 padding: EdgeInsets.only(bottom: 1),
