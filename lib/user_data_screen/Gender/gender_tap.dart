@@ -50,36 +50,39 @@ class GenderTap extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: (){
-                    Gender = "Male";
-                    print(Gender);
-                  },
-                  child: GenderItem(
-                    text: "Male",
-                    imagePath: "assets/images/male_icon_t.png",
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Gender = "Male";
+                      print(Gender);
+                    },
+                    child: GenderItem(
+                      text: "Male",
+                      imagePath: "assets/images/male_icon_t.png",
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: (){
-                    Gender="Female";
-                    print(Gender);
-                  },
-                  child: GenderItem(
-                    text: "Female",
-                    imagePath: "assets/images/Female_icon_t.png",
-                  ),
+                SizedBox(
+                  width: 10,
                 ),
-              )
-            ],
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Gender="Female";
+                      print(Gender);
+                    },
+                    child: GenderItem(
+                      text: "Female",
+                      imagePath: "assets/images/Female_icon_t.png",
+                    ),
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

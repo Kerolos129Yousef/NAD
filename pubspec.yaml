@@ -38,6 +38,8 @@ dependencies:
   flutter_svg: ^2.0.2
   horizontal_picker: ^1.2.0
   country_picker: ^2.0.20
+  image_picker: ^0.8.6+4
+  path: 1.8.2
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,8 @@ import 'package:add/util/utilities.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
+
+
 class CountryTap extends StatelessWidget {
   String selectedCountry = "";
   @override
@@ -38,6 +40,7 @@ class CountryTap extends StatelessWidget {
                 onSelect: (Country country) {
                   selectedCountry = country.name;
                   print(selectedCountry);
+
                 },
                 countryListTheme: CountryListThemeData(
                   // Optional. Sets the border radius for the bottomsheet.
@@ -64,7 +67,7 @@ class CountryTap extends StatelessWidget {
                 ),
               );
             },
-            child: const Text('Select Country',style: TextStyle(fontSize: 15)),
+            child: const Text('Select Country',style: TextStyle(fontSize: 17)),
           ),
         ],
       ),
