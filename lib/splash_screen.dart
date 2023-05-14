@@ -27,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          SizedBox(height: 230,),
-          Image.asset("assets/images/ADD_app_icon.png"),
+          SizedBox(height: 245,),
+          Center(child: Image.asset("assets/images/NAD_app_icon.png",width: MediaQuery.of(context).size.width*0.93,)),
           SizedBox(height: 70,),
           CircularProgressIndicator(color: Colors.red,)
         ],

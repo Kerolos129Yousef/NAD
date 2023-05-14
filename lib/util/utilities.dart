@@ -43,7 +43,7 @@ class Utilites extends StatelessWidget {
       Text(
         "$pageSubTitle",
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 17),
+        style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 18),
       ),
     ]);
   }

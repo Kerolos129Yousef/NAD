@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Image.asset("assets/images/ADD_app_logo.png" , height: 200,width: 400,),
+                    child: Image.asset("assets/images/NAD_app_icon.png" , height: 200,width: 400,),
                   ),
                       SizedBox(
                         height: 20,
