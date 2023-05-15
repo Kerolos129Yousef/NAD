@@ -109,7 +109,7 @@ class GenderTap extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 20),
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.pushNamed(context, AgeTap.routeName,arguments:DataOfModel(Arg.Country, Gender, "", ""));
+            Navigator.pushNamed(context, AgeTap.routeName,arguments:DataOfModel(Arg.Country, Gender, "", null));
           },
           child: Icon(
             Icons.water_drop_outlined,

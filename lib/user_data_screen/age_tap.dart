@@ -1,4 +1,4 @@
-import 'package:add/user_data_screen/eye_image_tap.dart';
+import 'package:add/user_data_screen/EyeScan/eye_image_tap.dart';
 import 'package:flutter/material.dart';
 import 'package:horizontal_picker/horizontal_picker.dart';
 
@@ -59,7 +59,7 @@ class AgeTap extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 20),
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.pushNamed(context, EyeImageTap.routeName,arguments: DataOfModel(Arg.Country,Arg.Gender, Age.toString(),""));
+            Navigator.pushNamed(context, EyeImageTap.routeName,arguments: DataOfModel(Arg.Country,Arg.Gender, Age.toString(),null));
           },
           child: Icon(
             Icons.water_drop_outlined,

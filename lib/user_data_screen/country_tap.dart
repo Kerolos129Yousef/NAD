@@ -94,7 +94,7 @@ class CountryTap extends StatelessWidget {
         child: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, GenderTap.routeName,
-                arguments: DataOfModel(selectedCountry, "", "", ""));
+                arguments: DataOfModel(selectedCountry, "", "", null));
           },
           child: Icon(
             Icons.water_drop_outlined,

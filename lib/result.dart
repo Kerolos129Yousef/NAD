@@ -15,7 +15,7 @@ static const String routeName = "ResultScreen";
           Center(child: Text(Arg.Age)),
           Center(child: Text(Arg.Gender)),
           Center(child: Text(Arg.Country)),
-          Center(child: Text(Arg.ImagePath))
+          Center(child: Image.file(Arg.Image!))
         ],
       ),
     );

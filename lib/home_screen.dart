@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:add/user_data_screen/age_tap.dart';
 import 'package:add/user_data_screen/country_tap.dart';
-import 'package:add/user_data_screen/eye_image_tap.dart';
+import 'package:add/user_data_screen/EyeScan/eye_image_tap.dart';
 import 'package:add/user_data_screen/Gender/gender_tap.dart';
 import 'package:flutter/material.dart';
 
