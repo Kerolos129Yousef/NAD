@@ -5,6 +5,8 @@ import 'package:add/util/utilities.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
+import '../Drawer/drawer.dart';
+
 class CountryTap extends StatefulWidget {
   static const String routeName = "CountryScreen";
 
@@ -27,6 +29,7 @@ class _CountryTapState extends State<CountryTap> {
         title: AppBarGlobal(() {
           Navigator.pop(context);
         }),
+
       ),
       backgroundColor: Colors.white,
       body: Container(
@@ -99,6 +102,7 @@ class _CountryTapState extends State<CountryTap> {
           ],
         ),
       ),
+      drawer:DrawerWidget() ,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 20),

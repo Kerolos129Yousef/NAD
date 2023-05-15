@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../Drawer/drawer.dart';
 import '../../data_of_model.dart';
 import '../../util/app_bar_global.dart';
 
@@ -92,6 +93,7 @@ class _EyeImageTapState extends State<EyeImageTap> {
           ],
         ),
       ),
+      drawer:DrawerWidget(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 20),

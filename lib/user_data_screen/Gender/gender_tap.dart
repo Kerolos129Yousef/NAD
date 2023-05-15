@@ -2,6 +2,7 @@ import 'package:add/data_of_model.dart';
 import 'package:add/user_data_screen/age_tap.dart';
 import 'package:flutter/material.dart';
 
+import '../../Drawer/drawer.dart';
 import '../../util/app_bar_global.dart';
 import 'gender_item.dart';
 
@@ -117,6 +118,7 @@ class _GenderTapState extends State<GenderTap> {
           ],
         ),
       ),
+      drawer:DrawerWidget(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 20),

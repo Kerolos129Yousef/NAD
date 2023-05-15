@@ -1,6 +1,7 @@
 import 'package:add/home_screen.dart';
 import 'package:add/login/login_screen.dart';
 import 'package:add/result.dart';
+import 'package:add/setting_tap.dart';
 import 'package:add/splash_screen.dart';
 import 'package:add/user_data_screen/Gender/gender_tap.dart';
 import 'package:add/user_data_screen/age_tap.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
        GenderTap.routeName:(_)=>GenderTap(),
        AgeTap.routeName:(_)=>AgeTap(),
        EyeImageTap.routeName:(_)=>EyeImageTap(),
-       ResultScreen.routeName:(_)=>ResultScreen()
+       ResultScreen.routeName:(_)=>ResultScreen(),
+       SettingTap.routeName:(_)=>SettingTap()
      },
       debugShowCheckedModeBanner: false,
 

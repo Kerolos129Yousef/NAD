@@ -3,6 +3,7 @@ import 'package:add/user_data_screen/EyeScan/eye_image_tap.dart';
 import 'package:flutter/material.dart';
 import 'package:horizontal_picker/horizontal_picker.dart';
 
+import '../Drawer/drawer.dart';
 import '../data_of_model.dart';
 import '../util/app_bar_global.dart';
 import '../util/utilities.dart';
@@ -69,6 +70,7 @@ class _AgeTapState extends State<AgeTap> {
           ],
         ),
       ),
+      drawer:DrawerWidget(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 20),
