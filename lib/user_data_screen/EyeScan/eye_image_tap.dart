@@ -1,18 +1,17 @@
-
-
 import 'dart:io';
 
 import 'package:add/result.dart';
 import 'package:add/user_data_screen/EyeScan/pick_item.dart';
 import 'package:add/util/utilities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../data_of_model.dart';
 import '../../util/app_bar_global.dart';
 
 class EyeImageTap extends StatefulWidget {
-  static const String routeName="EyeImageScreen";
+  static const String routeName = "EyeImageScreen";
   @override
   State<EyeImageTap> createState() => _EyeImageTapState();
 }
@@ -21,10 +20,8 @@ class _EyeImageTapState extends State<EyeImageTap> {
   // final picker = ImagePicker();
   // File? file ;
   // XFile? pickedImage;
-
+  bool fabEnable = false;
   File? _image;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +31,9 @@ class _EyeImageTapState extends State<EyeImageTap> {
         backgroundColor: Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: AppBarGlobal(
-                (){
-              Navigator.pop(context);
-            }
-        ),
+        title: AppBarGlobal(() {
+          Navigator.pop(context);
+        }),
       ),
       backgroundColor: Colors.white,
       body: Container(
@@ -46,60 +41,97 @@ class _EyeImageTapState extends State<EyeImageTap> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Utilites(
                 pageNumer: "4",
                 pageTitle: "Let's Scan your eye.",
                 pageSubTitle:
                     "To give you a better experiance we need \n to Scan your eye"),
-            SizedBox(height: 20,),
-            Image.asset("assets/images/eye_detection_t.png",width: 300,height: 300,),
-            SizedBox(height: 10,),
-             // Column(
-             //   children: [
-             //     customButton(title: "Pick from Gallery",icon: Icons.image,onClick: (){}),
-             //     SizedBox(height: 15,),
-             //     customButton(title: "Pick from Camera",icon: Icons.camera_alt_outlined, onClick: pickImage)
-             //
-             //   ],
-             // ),
+            SizedBox(
+              height: 20,
+            ),
+            Image.asset(
+              "assets/images/eye_detection_t.png",
+              width: 300,
+              height: 300,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            // Column(
+            //   children: [
+            //     customButton(title: "Pick from Gallery",icon: Icons.image,onClick: (){}),
+            //     SizedBox(height: 15,),
+            //     customButton(title: "Pick from Camera",icon: Icons.camera_alt_outlined, onClick: pickImage)
+            //
+            //   ],
+            // ),
             //------------------------
             //anthor way
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceAround,
-               children: [
-                 PickItemWidget(title: "Pick from Camera",imageUrl: "assets/images/camera.PNG",onClick:PickImageFromCamera ,),
-                 PickItemWidget(title: "Pick from Gallery",imageUrl: "assets/images/Gallery.PNG",onClick:PickImageFromGallery ,),
-               ],
-             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                PickItemWidget(
+                  title: "Pick from Camera",
+                  imageUrl: "assets/images/camera.PNG",
+                  onClick: PickImageFromCamera,
+                ),
+                PickItemWidget(
+                  title: "Pick from Gallery",
+                  imageUrl: "assets/images/Gallery.PNG",
+                  onClick: PickImageFromGallery,
+                ),
+              ],
+            ),
 
-              SizedBox(
-                height: 100,
-              ),
-
+            SizedBox(
+              height: 100,
+            ),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 20),
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, ResultScreen.routeName,arguments: DataOfModel(Arg.Country, Arg.Gender, Arg.Age,_image ));
-          },
-          child: Icon(
-            Icons.water_drop_outlined,
-            size: 30,
-          ),
-          backgroundColor: Colors.red,
-          foregroundColor: Colors.white,
-          shape: StadiumBorder(
-              side: BorderSide(
-                  color: Colors.white, width: 5, style: BorderStyle.solid)),
-        ),
+        child: fabEnable
+            ? FloatingActionButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ResultScreen.routeName,
+                      arguments: DataOfModel(
+                          Arg.Country, Arg.Gender, Arg.Age, _image));
+                },
+                child: Icon(
+                  Icons.water_drop_outlined,
+                  size: 30,
+                ),
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                shape: StadiumBorder(
+                    side: BorderSide(
+                        color: Colors.white,
+                        width: 5,
+                        style: BorderStyle.solid)),
+              )
+            : FloatingActionButton(
+                onPressed: () => null,
+                child: Icon(
+                  Icons.water_drop_outlined,
+                  size: 30,
+                ),
+                backgroundColor: Color.fromRGBO(63, 22, 23, 1),
+                foregroundColor: Colors.white,
+                shape: StadiumBorder(
+                    side: BorderSide(
+                        color: Colors.white,
+                        width: 5,
+                        style: BorderStyle.solid)),
+              ),
       ),
     );
   }
+
   //---------------------------------
 //old way to pick image
   // Future pickImage()async {
@@ -126,24 +158,32 @@ class _EyeImageTapState extends State<EyeImageTap> {
   //         ],
   //       ));
   // }
-  Future PickImageFromCamera()async{
-      final image = await ImagePicker().pickImage(source: ImageSource.camera);
-      if(image == null){
-        return;
-      }
-      final imageTemporary = File(image.path);
-      setState(() {
-        this._image = imageTemporary;
-      });
-  }
-  Future PickImageFromGallery()async{
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if(image == null){
+  Future PickImageFromCamera() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (image == null) {
       return;
     }
     final imageTemporary = File(image.path);
+    fabEnable = true;
     setState(() {
       this._image = imageTemporary;
     });
   }
+
+  Future PickImageFromGallery() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) {
+      return;
+    }
+    final imageTemporary = File(image.path);
+    fabEnable = true;
+    setState(() {
+      this._image = imageTemporary;
+    });
+  }
+  // _resizeImage()async{
+  //   File compressedFile =  await FlutterNativeImage.compressImage(imageTemporary.path, quality: 80,
+  //       targetWidth: 250, targetHeight: 250);
+  //   return compressedFile;
+  // }
 }

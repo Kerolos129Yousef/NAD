@@ -5,9 +5,18 @@ import 'package:add/util/utilities.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
-class CountryTap extends StatelessWidget {
+class CountryTap extends StatefulWidget {
   static const String routeName = "CountryScreen";
+
+  @override
+  State<CountryTap> createState() => _CountryTapState();
+}
+
+class _CountryTapState extends State<CountryTap> {
   String selectedCountry = "";
+
+  bool fabEnable = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +24,9 @@ class CountryTap extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: AppBarGlobal(
-            (){
-              Navigator.pop(context);
-            }
-        ),
+        title: AppBarGlobal(() {
+          Navigator.pop(context);
+        }),
       ),
       backgroundColor: Colors.white,
       body: Container(
@@ -56,6 +63,10 @@ class CountryTap extends StatelessWidget {
                   onSelect: (Country country) {
                     selectedCountry = country.name;
                     print(selectedCountry);
+                    fabEnable = true;
+                    setState(() {
+
+                    });
                   },
                   countryListTheme: CountryListThemeData(
                     // Optional. Sets the border radius for the bottomsheet.
@@ -91,23 +102,40 @@ class CountryTap extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 20),
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, GenderTap.routeName,
-                arguments: DataOfModel(selectedCountry, "", "", null));
-          },
+        child: fabEnable ?
+             FloatingActionButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, GenderTap.routeName,
+                      arguments: DataOfModel(selectedCountry, "", "", null));
+                },
+                child: Icon(
+                  Icons.water_drop_outlined,
+                  size: 30,
+                ),
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                shape: StadiumBorder(
+                    side: BorderSide(
+                        color: Colors.white,
+                        width: 5,
+                        style: BorderStyle.solid)),
+              ):FloatingActionButton(
+          onPressed: () => null,
+
           child: Icon(
             Icons.water_drop_outlined,
             size: 30,
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: Color.fromRGBO(63,22,23,1),
           foregroundColor: Colors.white,
           shape: StadiumBorder(
               side: BorderSide(
-                  color: Colors.white, width: 5, style: BorderStyle.solid)),
-        ),
-      ),
+                  color: Colors.white,
+                  width: 5,
+                  style: BorderStyle.solid)),
+        )
 
+      ),
     );
   }
 }

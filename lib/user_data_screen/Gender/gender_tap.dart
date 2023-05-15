@@ -5,10 +5,16 @@ import 'package:flutter/material.dart';
 import '../../util/app_bar_global.dart';
 import 'gender_item.dart';
 
-class GenderTap extends StatelessWidget {
-  static const String routeName="GenderScreen";
-  String Gender = "";
+class GenderTap extends StatefulWidget {
+  static const String routeName = "GenderScreen";
 
+  @override
+  State<GenderTap> createState() => _GenderTapState();
+}
+
+class _GenderTapState extends State<GenderTap> {
+  String Gender = "";
+  bool fabEnable = false;
   @override
   Widget build(BuildContext context) {
     var Arg = ModalRoute.of(context)?.settings.arguments as DataOfModel;
@@ -17,15 +23,12 @@ class GenderTap extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: AppBarGlobal(
-                (){
-              Navigator.pop(context);
-            }
-        ),
+        title: AppBarGlobal(() {
+          Navigator.pop(context);
+        }),
       ),
-          backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: Container(
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -53,7 +56,9 @@ class GenderTap extends StatelessWidget {
             Text(
               "What's your gender?",
               style: TextStyle(
-                  color: Colors.black, fontSize: 25, fontWeight: FontWeight.w500),
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: 15,
@@ -73,8 +78,12 @@ class GenderTap extends StatelessWidget {
                 children: [
                   Expanded(
                     child: InkWell(
-                      onTap: (){
+                      onTap: () {
                         Gender = "Male";
+                        fabEnable = true;
+                        setState(() {
+
+                        });
                         print(Gender);
                       },
                       child: GenderItem(
@@ -88,8 +97,12 @@ class GenderTap extends StatelessWidget {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: (){
-                        Gender="Female";
+                      onTap: () {
+                        Gender = "Female";
+                        fabEnable = true;
+                        setState(() {
+
+                        });
                         print(Gender);
                       },
                       child: GenderItem(
@@ -107,27 +120,44 @@ class GenderTap extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 20),
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, AgeTap.routeName,arguments:DataOfModel(Arg.Country, Gender, "", null));
-          },
-          child: Icon(
-            Icons.water_drop_outlined,
-            size: 30,
-          ),
-          backgroundColor: Colors.red,
-          foregroundColor: Colors.white,
-          shape: StadiumBorder(
-              side: BorderSide(
-                  color: Colors.white, width: 5, style: BorderStyle.solid)),
-        ),
+        child: fabEnable
+            ? FloatingActionButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, AgeTap.routeName,
+                      arguments: DataOfModel(Arg.Country, Gender, "", null));
+                },
+                child: Icon(
+                  Icons.water_drop_outlined,
+                  size: 30,
+                ),
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                shape: StadiumBorder(
+                    side: BorderSide(
+                        color: Colors.white,
+                        width: 5,
+                        style: BorderStyle.solid)),
+              )
+            : FloatingActionButton(
+                onPressed: () => null,
+                child: Icon(
+                  Icons.water_drop_outlined,
+                  size: 30,
+                ),
+                backgroundColor: Color.fromRGBO(63, 22, 23, 1),
+                foregroundColor: Colors.white,
+                shape: StadiumBorder(
+                    side: BorderSide(
+                        color: Colors.white,
+                        width: 5,
+                        style: BorderStyle.solid)),
+              ),
       ),
     );
   }
-   onItemClick(String text){
+
+  onItemClick(String text) {
     Gender = text;
     print(Gender);
-
-    
   }
 }
